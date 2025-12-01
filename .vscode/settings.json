@@ -1,0 +1,15 @@
+{
+  "[java]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "java.format.settings.profile": "Eclipse",
+  "java.format.comments.enabled": true,
+  "java.format.onType.enabled": true,
+  "redhat.telemetry.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "redhat.java"
+}
