@@ -1,9 +1,10 @@
 import java.nio.file.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Ex1 {
     public static void main(String[] args) throws IOException {
-        Board board = new Board("input.txt");
+        // Board board = new Board("input.txt");
         String[] lines = Files.readAllLines(Path.of("input.txt")).toArray(new String[0]);
 
         String algorithm = lines[0];
@@ -24,19 +25,21 @@ public class Ex1 {
             grid[i] = lines[5 + i].toCharArray();
         }
 
+        Board board = new Board(N, M, grid);
+
         Algorithm solver = null;
         switch (algorithm) {
             case "BFS":
-                solver = new BFS(board, order, withOpen);
+                solver = new BFS(order, withOpen);
                 break;
-            case "A*":
+            case "A*": // Change these...
                 solver = new AStar(board, order, tieBreaking, withOpen);
                 break;
             case "DFID":
-                solver = new DFID(board, order, withOpen);
+                solver = new DFID(board, order, tieBreaking, withOpen);
                 break;
             case "IDA*":
-                solver = new IDAStar(board, order, withOpen);
+                solver = new IDAStar(board, order, tieBreaking, withOpen);
                 break;
             case "DFBnB":
                 solver = new DFBnB(board, order, tieBreaking, withOpen);
@@ -46,9 +49,23 @@ public class Ex1 {
         }
 
         long startTime = System.nanoTime();
-        Result result = solver.solve();
+        String result = solver.solve(board);
         double timeSec = (System.nanoTime() - startTime) / 1e9;
 
         writeToOutput(result, withTime ? timeSec : -1, withOpen);
+
     }
+
+    public static void writeToOutput(String path, double timeSec, boolean withOpen) {
+        try (PrintWriter out = new PrintWriter("output.txt")) {
+            out.println(path); // the moves/path
+            if (timeSec >= 0) // optional runtime
+                out.println("Time: " + timeSec + "s");
+            if (withOpen)
+                out.println("Open list info..."); // if you want
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
