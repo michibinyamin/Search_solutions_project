@@ -7,12 +7,12 @@ public class Ex1 {
         // Board board = new Board("input.txt");
         String[] lines = Files.readAllLines(Path.of("input.txt")).toArray(new String[0]);
 
-        String algorithm = lines[0];
+        String algorithm = lines[0]; // first line: algorithm
         String[] line2_split = lines[1].split(" ");
-        String order = line2_split[0];
-        String tieBreaking = (line2_split.length > 1) ? line2_split[1] : null;
-        boolean withTime = lines[2].equals("with time");
-        boolean withOpen = lines[3].equals("with open");
+        String order = line2_split[0]; // second line: order
+        String tieBreaking = (line2_split.length > 1) ? line2_split[1] : null; // second line: tie-breaking
+        boolean withTime = lines[2].equals("with time"); // third line: with time
+        boolean withOpen = lines[3].equals("with open"); // fourth line: with open
 
         // parse grid size
         String[] sizeSplit = lines[4].split("x");
@@ -26,24 +26,25 @@ public class Ex1 {
         }
 
         Board board = new Board(N, M, grid);
+        board.displayBoard();
 
         Algorithm solver = null;
         switch (algorithm) {
             case "BFS":
                 solver = new BFS(order, withOpen);
                 break;
-            case "A*": // Change these...
-                solver = new AStar(board, order, tieBreaking, withOpen);
-                break;
-            case "DFID":
-                solver = new DFID(board, order, tieBreaking, withOpen);
-                break;
-            case "IDA*":
-                solver = new IDAStar(board, order, tieBreaking, withOpen);
-                break;
-            case "DFBnB":
-                solver = new DFBnB(board, order, tieBreaking, withOpen);
-                break;
+            // case "A*": // Change these...
+            // solver = new AStar(board, order, tieBreaking, withOpen);
+            // break;
+            // case "DFID":
+            // solver = new DFID(board, order, tieBreaking, withOpen);
+            // break;
+            // case "IDA*":
+            // solver = new IDAStar(board, order, tieBreaking, withOpen);
+            // break;
+            // case "DFBnB":
+            // solver = new DFBnB(board, order, tieBreaking, withOpen);
+            // break;
             default:
                 throw new IllegalArgumentException("Unknown algorithm: " + algorithm);
         }

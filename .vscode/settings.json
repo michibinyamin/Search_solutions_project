@@ -2,11 +2,13 @@
   "[java]": {
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "editor.tabSize": 4,
+    "editor.tabSize": 2,  // Google Style uses 2 spaces, Eclipse uses 4
     "editor.insertSpaces": true,
     "editor.defaultFormatter": "redhat.java"
   },
-  "java.format.settings.profile": "Eclipse",
+  // CHANGE: Switch profile to GoogleStyle
+  "java.format.settings.profile": "GoogleStyle",
+  "java.format.settings.lineLength": 200,
   "java.format.comments.enabled": true,
   "java.format.onType.enabled": true,
   "redhat.telemetry.enabled": false,
