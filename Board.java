@@ -18,8 +18,10 @@ public class Board {
         if (grid[r][c] == '~' && !hasSupplyStation)
             return false;
 
-        if (parent != null && parent.row == r && parent.col == c)
-            return false; // not going back to parent
+        // not going back to parent
+        if (parent != null && parent.row == r && parent.col == c
+                && parent.SupplyStation == hasSupplyStation)
+            return false;
 
         // not a wall
         return grid[r][c] != '#'; // or whatever blocks movement
@@ -30,7 +32,7 @@ public class Board {
         for (int r = 0; r < rows; r++)
             for (int c = 0; c < cols; c++)
                 if (grid[r][c] == 'S')
-                    return new State(r, c, 0, 0, null, null, false, this);
+                    return new State(r, c, 0, 0, null, null, this);
         return null;
     }
 
@@ -38,7 +40,7 @@ public class Board {
         for (int r = 0; r < rows; r++)
             for (int c = 0; c < cols; c++)
                 if (grid[r][c] == 'G')
-                    return new State(r, c, 0, 0, null, null, false, null);
+                    return new State(r, c, 0, 0, null, null, null);
         return null;
     }
 

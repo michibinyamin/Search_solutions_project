@@ -53,7 +53,10 @@ public class BFS implements Algorithm {
                 if (board.isLegal(newR, newC, current.SupplyStation, current.parent)) {
                     State next = new State(newR, newC,
                             current.g + board.getPositionValue(newR, newC, dir), 0, current,
-                            dir.name(), current.SupplyStation, board);
+                            dir.name(), board);
+
+                    // `System.out.println(current.SupplyStation);
+
 
                     visitedNodes++;
 
@@ -95,3 +98,7 @@ public class BFS implements Algorithm {
         System.out.println("Open list: [" + content + "]");
     }
 }
+
+
+// potensial bugs - unique id not unique becuase you can have two states in the same place on board
+// but one with supply station and one without
