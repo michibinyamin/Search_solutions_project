@@ -10,7 +10,8 @@ public class Ex1 {
         String algorithm = lines[0]; // first line: algorithm
         String[] line2_split = lines[1].split(" ");
         String order = line2_split[0]; // second line: order
-        String tieBreaking = (line2_split.length > 1) ? line2_split[1] : null; // second line: tie-breaking
+        String tieBreaking = (line2_split.length > 1) ? line2_split[1] : null; // second line:
+                                                                               // tie-breaking
         boolean withTime = lines[2].equals("with time"); // third line: with time
         boolean withOpen = lines[3].equals("with open"); // fourth line: with open
 
@@ -33,12 +34,12 @@ public class Ex1 {
             case "BFS":
                 solver = new BFS(order, withOpen);
                 break;
-            // case "A*": // Change these...
+            // case "A*":
             // solver = new AStar(board, order, tieBreaking, withOpen);
             // break;
-            // case "DFID":
-            // solver = new DFID(board, order, tieBreaking, withOpen);
-            // break;
+            case "DFID":
+                solver = new DFID(order, withOpen);
+                break;
             // case "IDA*":
             // solver = new IDAStar(board, order, tieBreaking, withOpen);
             // break;
@@ -62,8 +63,8 @@ public class Ex1 {
             out.println(path); // the moves/path
             if (timeSec >= 0) // optional runtime
                 out.println("Time: " + timeSec + "s");
-            if (withOpen)
-                out.println("Open list info..."); // if you want
+            // if (withOpen)
+            // out.println("Open list info..."); // if you want
         } catch (IOException e) {
             e.printStackTrace();
         }
