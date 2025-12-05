@@ -34,9 +34,9 @@ public class Ex1 {
             case "BFS":
                 solver = new BFS(order, withOpen);
                 break;
-            // case "A*":
-            // solver = new AStar(board, order, tieBreaking, withOpen);
-            // break;
+            case "A*":
+                solver = new AStar(order, withOpen, tieBreaking);
+                break;
             case "DFID":
                 solver = new DFID(order, withOpen);
                 break;

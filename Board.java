@@ -1,3 +1,5 @@
+import java.util.*; // Required for List, ArrayList, Map, HashMap
+
 public class Board {
     private final int rows;
     private final int cols;
@@ -108,6 +110,30 @@ public class Board {
 
     public char[][] getGrid() {
         return grid;
+    }
+
+    public List<int[]> getAllTunnels() {
+        List<int[]> tunnels = new ArrayList<>();
+        Map<Character, int[]> tempMap = new HashMap<>();
+
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                if (isTunnel(r, c)) {
+                    char tunnelId = grid[r][c];
+
+                    if (tempMap.containsKey(tunnelId)) {
+                        // We found the second end of the tunnel
+                        int[] exit1 = tempMap.get(tunnelId);
+                        // Add the pair: {row1, col1, row2, col2}
+                        tunnels.add(new int[] {exit1[0], exit1[1], r, c});
+                    } else {
+                        // Found the first end, store it and wait for the second
+                        tempMap.put(tunnelId, new int[] {r, c});
+                    }
+                }
+            }
+        }
+        return tunnels;
     }
 
     public void displayBoard() {

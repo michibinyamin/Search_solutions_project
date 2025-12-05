@@ -91,8 +91,8 @@ public class DFID implements Algorithm {
       // -------------------------------------------
 
       if (board.isLegal(newR, newC, current.SupplyStation, current.parent)) {
-        State next = new State(newR, newC, current.g + board.getPositionValue(newR, newC, dir), 0,
-            current, dir.name(), board);
+        State next = new State(newR, newC, current.getG() + board.getPositionValue(newR, newC, dir),
+            0, current, dir.name(), board);
 
         // LOOP AVOIDANCE CHECK:
         // Only visit if 'next' is NOT currently in our ancestors list
@@ -135,7 +135,7 @@ public class DFID implements Algorithm {
   @Override
   public String returnResult(State next) {
     return buildPath(next) + "\n" + "Num: " + visitedNodes + "\n" + "Max space: " + maxSpace + "\n"
-        + "Cost: " + next.g;
+        + "Cost: " + next.getG();
   }
 
   private void printOpenSet(Set<String> path) {

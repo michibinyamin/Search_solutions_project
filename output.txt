@@ -1,4 +1,4 @@
-R-R-Ent-U-U
-Num: 70
-Max space: 5
-Cost: 14
+R-Ent-L
+Num: 11
+Max space: 6
+Cost: 8

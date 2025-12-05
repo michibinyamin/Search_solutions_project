@@ -52,7 +52,7 @@ public class BFS implements Algorithm {
                 // parent
                 if (board.isLegal(newR, newC, current.SupplyStation, current.parent)) {
                     State next = new State(newR, newC,
-                            current.g + board.getPositionValue(newR, newC, dir), 0, current,
+                            current.getG() + board.getPositionValue(newR, newC, dir), 0, current,
                             dir.name(), board);
 
                     // `System.out.println(current.SupplyStation);
@@ -90,7 +90,7 @@ public class BFS implements Algorithm {
     @Override
     public String returnResult(State next) {
         return buildPath(next) + "\n" + "Num: " + visitedNodes + "\n" + "Max space: " + maxSpace
-                + "\n" + "Cost: " + next.g;
+                + "\n" + "Cost: " + next.getG();
     }
 
     private void printOpenSet(Set<String> openSet) {
