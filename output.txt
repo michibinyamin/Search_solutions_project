@@ -1,4 +1,4 @@
-R-Ent-L
-Num: 11
-Max space: 6
-Cost: 8
+LD-D-D-D-D-D-D-Ent-L-L-LU-LU-LU-LU-LU-LU-LU-RU-LU-RU-RU
+Num: 516
+Max space: 51
+Cost: 66

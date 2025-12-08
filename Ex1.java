@@ -40,9 +40,9 @@ public class Ex1 {
             case "DFID":
                 solver = new DFID(order, withOpen);
                 break;
-            // case "IDA*":
-            // solver = new IDAStar(board, order, tieBreaking, withOpen);
-            // break;
+            case "IDA*":
+                solver = new IDAStar(order, withOpen);
+                break;
             // case "DFBnB":
             // solver = new DFBnB(board, order, tieBreaking, withOpen);
             // break;

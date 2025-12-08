@@ -65,8 +65,8 @@ public class Board {
             case '-':
                 return 1;
             case '^':
-                return (dir == Direction.UR || dir == Direction.UL || dir == Direction.DL
-                        || dir == Direction.DR) ? 10 : 5; // only if moving diagonally
+                return (dir == Direction.RU || dir == Direction.LU || dir == Direction.LD
+                        || dir == Direction.RD) ? 10 : 5; // only if moving diagonally
             case '~':
                 return 3; // only if allowed
             case '*':
@@ -85,7 +85,7 @@ public class Board {
 
     public boolean isTunnel(int r, int c) {
         char cell = getCell(r, c);
-        return cell >= '1' && cell <= '9';
+        return cell >= '0' && cell <= '9';
     }
 
     public boolean isSmoothFloor(int r, int c) {
